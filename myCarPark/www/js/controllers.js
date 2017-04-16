@@ -7,15 +7,13 @@ function ($scope, $stateParams) {
 
 
 }])
-<<<<<<< HEAD
 
-.controller('reserveBookingCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-=======
+
+
+
    
 .controller('reserveBookingCtrl', ['$scope', '$stateParams','$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
->>>>>>> 6247bf58122d3305fb664e0c4ee99e41859a08d9
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+
 function ($scope, $stateParams, $http) {
   var user_id=101;
  $scope.$on('$ionicView.loaded', function(event) {
