@@ -19,19 +19,24 @@ function ($scope, $stateParams, $http) {
  
  $scope.$on('$ionicView.loaded', function(event) {
      var user_id=window.localStorage.getItem(id);
+     
     $http.get('https://api.mlab.com/api/1/databases/carpark/collections/slot/58f27fcc734d1d3b89ba801e?apiKey=uB6GZgs0JHGxvojb6G9wHunoxCue0JOT').success(function (data) {
           var floorSlots=["A0","A1","A2","A3","A4","A5","A6","A7"];
         var A=new Array(data.A0,data.A1,data.A2,data.A3,data.A4,data.A5,data.A6,data.A7);
+        var booked_count=0;
              for(var i=0;i<8;i++){
               var slot=document.getElementById(floorSlots[i]);	
                 if(A[i]==0)
+                    {
                     slot.style.backgroundColor ='green';
+                    booked_count++;
+                    }
                  else if(A[i]==user_id)
                      slot.style.backgroundColor ='yellow';
                  else
                     slot.style.backgroundColor ='red'; 
              }
-             
+             $scope.x=booked_count;
     
         }); 
   });
