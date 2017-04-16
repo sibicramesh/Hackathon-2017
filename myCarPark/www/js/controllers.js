@@ -58,6 +58,7 @@ $scope.bookSlot = function(a) {
             //console.log(data.a)
         slot.style.backgroundColor="yellow";
 			alert("Slot "+a+" booking is confirmed");
+            location.reload();
         })
         
 			
