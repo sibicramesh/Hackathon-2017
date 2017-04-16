@@ -37,6 +37,7 @@ function ($scope, $stateParams, $http) {
   });
     
 $scope.bookSlot = function(a) {
+    var user_id=window.localStorage.getItem(id);
 		var slot=document.getElementById(a);		
 		console.log(slot.style.backgroundColor);		
 		slot.style.backgroundColor = slot.style.backgroundColor == 'red' ? alert("Try other available slot") : confirmSlot();
