@@ -1,3 +1,4 @@
+var id;
 angular.module('app.controllers', [])
 
 .controller('myCarParkCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -15,9 +16,9 @@ function ($scope, $stateParams) {
 .controller('reserveBookingCtrl', ['$scope', '$stateParams','$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 
 function ($scope, $stateParams, $http) {
-  var user_id=101;
+ 
  $scope.$on('$ionicView.loaded', function(event) {
-    
+     var user_id=window.localStorage.getItem(id);
     $http.get('https://api.mlab.com/api/1/databases/carpark/collections/slot/58f27fcc734d1d3b89ba801e?apiKey=uB6GZgs0JHGxvojb6G9wHunoxCue0JOT').success(function (data) {
           var floorSlots=["A0","A1","A2","A3","A4","A5","A6","A7"];
         var A=new Array(data.A0,data.A1,data.A2,data.A3,data.A4,data.A5,data.A6,data.A7);
@@ -124,8 +125,6 @@ var name=$scope.uname;
       }
 
     $scope.id=id;
-    window.localStorage.setItem( id, $scope.id );
-    window.localStorage.getItem(id);
       return id;
 
   }
@@ -143,10 +142,14 @@ var name=$scope.uname;
         var pw=$scope.pass;
         var words = $http.get('https://api.mongolab.com/api/1/databases/sample/collections/MyDB?q={\"username\":\"'+name+'\",\"password\":\"'+pw+'\"}&apiKey=1ZOH8YSgfpyJnkDHGCoKR1D6M36Ybm_E')
         words.success(function (data) {
-          console.log(data);
+          
 
 if(name==data[0].username&&pw==data[0].password){
-  $state.go('menu.myCarPark')
+   // var id;
+    //console.log(data[0].id);
+    window.localStorage.setItem( id, data[0].id );
+    window.localStorage.getItem(id);
+  $state.go('menu.reserveBooking')
 }
         });
       }
