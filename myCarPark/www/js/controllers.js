@@ -17,7 +17,7 @@ function ($scope, $stateParams) {
 
 function ($scope, $stateParams, $http) {
  
- $scope.$on('$ionicView.loaded', function(event) {
+ $scope.viewSlot=function(event) {
      var user_id=window.localStorage.getItem(id);
      
     $http.get('https://api.mlab.com/api/1/databases/carpark/collections/slot/58f27fcc734d1d3b89ba801e?apiKey=uB6GZgs0JHGxvojb6G9wHunoxCue0JOT').success(function (data) {
@@ -39,7 +39,7 @@ function ($scope, $stateParams, $http) {
              $scope.x=booked_count;
     
         }); 
-  });
+  };
     
 $scope.bookSlot = function(a) {
     var user_id=window.localStorage.getItem(id);
